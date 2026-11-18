@@ -1501,14 +1501,18 @@ body.is-preload .wrapper.fade-up > .inner {
 
 .mockup video {
 	display: block;
-  flex: 0 0 auto;
+  flex: 0 0 var(--video-width);   /* fixed share of the row: it can't grow to the video's own pixel size */
   width: var(--video-width);
+  max-width: var(--video-width);
+  min-width: 0;
   height: auto;
   margin: 20px;                 /* cancels the global video margin, which was pushing the video away from the text */
 }
 
 .mockup-text {
-  flex: 0 1 500px;           /* replaces flex: 1, so the text has a set width instead of stretching */
+  flex: 1 1 0;               /* text takes whatever room the video leaves */
+  min-width: 0;
+  max-width: 500px;
 }
 
 .register {      	/* registration video */
